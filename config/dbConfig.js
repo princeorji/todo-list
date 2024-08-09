@@ -16,7 +16,7 @@ const User = require('../src/models/users')(sequelize, DataTypes);
 const Todo = require('../src/models/todos')(sequelize, DataTypes);
 
 // Set up associations
-User.hasMany(Todo);
-Todo.belongsTo(User);
+User.hasMany(Todo, { foreignKey: 'user_id' });
+Todo.belongsTo(User, { foreignKey: 'user_id' });
 
 module.exports = { connect, User, Todo };

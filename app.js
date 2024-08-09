@@ -10,6 +10,7 @@ require('./config/passport');
 
 const authRoute = require('./src/routes/auth.routes');
 const userRoute = require('./src/routes/users.routes');
+const todoRoute = require('./src/routes/todo.routes');
 
 const app = express();
 const port = 3000;
@@ -32,6 +33,7 @@ app.use(passport.session());
 
 app.use('', authRoute);
 app.use('/users', isAuthenticated, userRoute);
+app.use('/todos', isAuthenticated, todoRoute);
 
 // Error handler middleware
 app.use(errorHandler);

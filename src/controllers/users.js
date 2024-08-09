@@ -1,4 +1,5 @@
 const { User } = require('../../config/dbConfig');
+const { Todo } = require('../../config/dbConfig');
 
 const userProfile = async (req, res) => {
   try {
@@ -13,7 +14,9 @@ const userProfile = async (req, res) => {
       return;
     }
 
-    res.status(200).json({ user });
+    const todos = await Todo.findAll({ where: { user_id: user.id } });
+
+    res.status(200).json({ user, todos });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
