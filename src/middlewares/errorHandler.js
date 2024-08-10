@@ -1,6 +1,5 @@
-const errorHandler = (err, req, res, next) => {
-  res.status(500).json({ error: 'Internal Server Error' });
-  next();
+const errorHandler = (req, res, next) => {
+  res.status(404).send('Page Not Found');
 };
 
 module.exports = errorHandler;
