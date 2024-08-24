@@ -10,7 +10,14 @@ const register = async (req, res) => {
     }
 
     const user = await User.create({ username, email, password });
-    res.status(201).json({ user });
+    res.status(201).json({
+      message: 'Registration successful',
+      data: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
+    });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
@@ -29,7 +36,7 @@ const login = async (req, res, next) => {
       if (err) {
         return res.status(500).json({ error: 'Internal Server Error' });
       }
-      res.status(200).json({ message: 'Login successful', user });
+      res.status(200).json({ message: 'Login successful' });
     });
   })(req, res, next);
 };

@@ -44,7 +44,7 @@ const updateTodo = async (req, res) => {
       return;
     }
 
-    res.status(200).json({ message: 'Sucessfully updated task', todo });
+    res.status(200).json({ message: 'Successfully updated task', todo });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -61,7 +61,7 @@ const deleteTodo = async (req, res) => {
       return;
     }
 
-    res.status(200).json({ message: 'Sucessfully deleted task' });
+    res.status(200).json({ message: 'Successfully deleted task' });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
